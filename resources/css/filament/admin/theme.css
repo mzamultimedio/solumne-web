@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        color-scheme: dark;
+
+        /* Paleta Amarillo/Dorado Premium */
+        --filament-color-primary-50: 254 252 232;
+        --filament-color-primary-100: 254 249 195;
+        --filament-color-primary-200: 254 240 138;
+        --filament-color-primary-300: 253 224 71;
+        --filament-color-primary-400: 250 204 21;
+        --filament-color-primary-500: 234 179 8;
+        --filament-color-primary-600: 202 138 4;
+        --filament-color-primary-700: 161 98 7;
+        --filament-color-primary-800: 133 77 14;
+        --filament-color-primary-900: 113 63 18;
+        --filament-color-primary-950: 66 32 6;
+
+        --filament-body-color: 209 213 219;
+        --filament-body-background-color: 17 24 39;
+
+        --filament-sidebar-width: 17rem;
+    }
+
+    body {
+        @apply bg-gray-900 text-gray-300 antialiased;
+        font-family: 'Inter', system-ui, sans-serif;
+    }
+}
+
+@layer components {
+
+    /* ========== TOPBAR ========== */
+    .fi-topbar {
+        @apply bg-gray-800/95 backdrop-blur-xl border-b border-gray-700/50 shadow-lg;
+    }
+
+    .fi-topbar-item.fi-user-menu {
+        @apply text-gray-200;
+    }
+
+    /* ========== SIDEBAR ========== */
+    .fi-sidebar {
+        @apply bg-gradient-to-b from-gray-800 to-gray-900 text-gray-300 border-r border-gray-700/50;
+    }
+
+    .fi-sidebar-header {
+        @apply border-b border-gray-700/50 pb-4 mb-2;
+    }
+
+    .fi-sidebar-nav {
+        @apply px-2;
+    }
+
+    .fi-sidebar-group-label {
+        @apply text-xs font-bold uppercase tracking-wider text-gray-500 px-3 py-2;
+    }
+
+    .fi-sidebar-item a.fi-sidebar-item-button {
+        @apply text-gray-400 rounded-xl transition-all duration-200;
+    }
+
+    .fi-sidebar-item a.fi-sidebar-item-button:hover {
+        @apply bg-gray-700/60 text-yellow-400 translate-x-1;
+    }
+
+    .fi-sidebar-item a.fi-sidebar-item-button[aria-current="page"] {
+        @apply bg-gradient-to-r from-yellow-400/20 to-transparent border-l-4 border-yellow-400 rounded-l-none;
+        color: rgb(250 204 21) !important;
+    }
+
+    .fi-sidebar-item-icon {
+        @apply transition-all duration-300;
+    }
+
+    .fi-sidebar-item a.fi-sidebar-item-button:hover .fi-sidebar-item-icon {
+        @apply scale-110;
+        filter: drop-shadow(0 0 6px currentColor);
+    }
+
+    /* ========== METALLIC ICON COLORS BY SECTION ========== */
+
+    /* Dashboard - Oro brillante */
+    .fi-sidebar-nav>ul>li:first-child .fi-sidebar-item-icon {
+        color: #fbbf24;
+        filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.3));
+    }
+
+    /* Finanzas - Esmeralda metálico */
+    .fi-sidebar-group:nth-of-type(1) .fi-sidebar-item-icon {
+        color: #34d399;
+        filter: drop-shadow(0 0 2px rgba(52, 211, 153, 0.3));
+    }
+
+    /* Gestión Académica - Azul cielo metálico */
+    .fi-sidebar-group:nth-of-type(2) .fi-sidebar-item-icon {
+        color: #38bdf8;
+        filter: drop-shadow(0 0 2px rgba(56, 189, 248, 0.3));
+    }
+
+    /* Gestión de Usuarios - Violeta metálico */
+    .fi-sidebar-group:nth-of-type(3) .fi-sidebar-item-icon {
+        color: #a78bfa;
+        filter: drop-shadow(0 0 2px rgba(167, 139, 250, 0.3));
+    }
+
+    /* Integraciones/Configuración - Rosa metálico */
+    .fi-sidebar-group:nth-of-type(4) .fi-sidebar-item-icon {
+        color: #f472b6;
+        filter: drop-shadow(0 0 2px rgba(244, 114, 182, 0.3));
+    }
+
+    /* Extra groups - Plata metálico */
+    .fi-sidebar-group:nth-of-type(n+5) .fi-sidebar-item-icon {
+        color: #94a3b8;
+        filter: drop-shadow(0 0 2px rgba(148, 163, 184, 0.3));
+    }
+
+    /* ========== ANIMATED SIDEBAR ICONS ========== */
+    @keyframes icon-float {
+
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-3px);
+        }
+    }
+
+    @keyframes icon-glow {
+
+        0%,
+        100% {
+            filter: drop-shadow(0 0 2px currentColor);
+        }
+
+        50% {
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+    }
+
+    @keyframes color-shift {
+        0% {
+            color: rgb(250 204 21);
+        }
+
+        33% {
+            color: rgb(251 191 36);
+        }
+
+        66% {
+            color: rgb(245 158 11);
+        }
+
+        100% {
+            color: rgb(250 204 21);
+        }
+    }
+
+    @keyframes pulse-icon {
+
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        50% {
+            transform: scale(1.15);
+            opacity: 0.85;
+        }
+    }
+
+    /* Icon animations on active state */
+    .fi-sidebar-item a.fi-sidebar-item-button[aria-current="page"] .fi-sidebar-item-icon {
+        animation: icon-float 3s ease-in-out infinite, icon-glow 2s ease-in-out infinite;
+    }
+
+    /* Hover animation for all sidebar icons */
+    .fi-sidebar-item a.fi-sidebar-item-button:hover .fi-sidebar-item-icon {
+        animation: pulse-icon 0.5s ease-out;
+    }
+
+    /* Subtle floating animation for group labels */
+    .fi-sidebar-group-label {
+        animation: fadeInUp 0.5s ease-out;
+    }
+
+    /* ========== CONTENT ========== */
+    .fi-main {
+        @apply bg-gray-900;
+    }
+
+    .fi-header {
+        @apply border-b border-gray-800/50 pb-6 mb-6;
+    }
+
+    .fi-header-heading {
+        @apply text-2xl md:text-3xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent;
+    }
+
+    /* ========== WIDGETS ========== */
+    .fi-wi-stats-overview {
+        @apply gap-4 md:gap-6;
+    }
+
+    .fi-wi-stats-overview-stat {
+        @apply bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-700/50 p-5 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-yellow-400/5;
+    }
+
+    .fi-wi-stats-overview-stat-value {
+        @apply text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent;
+    }
+
+    .fi-wi-stats-overview-stat-label {
+        @apply text-gray-400 font-medium text-sm uppercase tracking-wide;
+    }
+
+    .fi-wi-stats-overview-stat-description {
+        @apply text-xs text-gray-500 mt-1;
+    }
+
+    .fi-wi-stats-overview-stat-icon {
+        @apply p-3 rounded-xl;
+    }
+
+    /* ========== SECTIONS ========== */
+    .fi-section {
+        @apply bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-700/50 text-gray-200 shadow-lg transition-all duration-300;
+    }
+
+    .fi-section:hover {
+        @apply shadow-xl shadow-black/20;
+    }
+
+    .fi-section-header {
+        @apply border-b border-gray-700/50 px-6 py-4;
+    }
+
+    .fi-section-header-heading {
+        @apply text-lg font-bold text-gray-100;
+    }
+
+    .fi-section-content {
+        @apply p-6;
+    }
+
+    /* ========== FORMS ========== */
+    .fi-fo-field-wrp {
+        @apply space-y-2;
+    }
+
+    .fi-fo-field-wrp label {
+        @apply text-gray-300 font-medium text-sm;
+    }
+
+    .fi-input {
+        @apply bg-gray-900/60 border-gray-700/60 text-gray-200 rounded-xl transition-all duration-200;
+    }
+
+    .fi-input:focus {
+        @apply border-yellow-400/50 ring-2 ring-yellow-400/20 bg-gray-900;
+    }
+
+    .fi-input-wrp {
+        @apply rounded-xl overflow-hidden;
+    }
+
+    .fi-select-input {
+        @apply bg-gray-900/60 border-gray-700/60 text-gray-200 rounded-xl;
+    }
+
+    /* ========== TABLES ========== */
+    .fi-ta {
+        @apply bg-transparent;
+    }
+
+    .fi-ta-header {
+        @apply bg-gray-800/50 backdrop-blur-sm rounded-t-2xl border-b border-gray-700/50;
+    }
+
+    .fi-ta-header-heading {
+        @apply text-lg font-bold text-gray-100;
+    }
+
+    .fi-ta-content {
+        @apply bg-gray-800/40 backdrop-blur-sm rounded-b-2xl border border-t-0 border-gray-700/50;
+    }
+
+    .fi-ta-table {
+        @apply bg-transparent text-gray-200;
+    }
+
+    .fi-ta-row {
+        @apply border-b border-gray-700/30 transition-all duration-200;
+    }
+
+    .fi-ta-row:hover {
+        @apply bg-gray-700/30;
+    }
+
+    .fi-ta-header-cell {
+        @apply text-gray-400 font-semibold uppercase text-xs tracking-wider py-4 px-4;
+    }
+
+    .fi-ta-cell {
+        @apply py-4 px-4;
+    }
+
+    /* ========== BUTTONS ========== */
+    .fi-btn {
+        @apply font-semibold rounded-xl transition-all duration-200;
+    }
+
+    .fi-btn.fi-color-primary {
+        @apply bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 hover:from-yellow-300 hover:to-amber-400 shadow-lg shadow-yellow-400/20 hover:shadow-yellow-400/30 hover:scale-[1.02];
+    }
+
+    .fi-btn.fi-color-gray {
+        @apply bg-gray-700/60 text-gray-200 hover:bg-gray-600/60 border border-gray-600/50;
+    }
+
+    .fi-btn.fi-color-danger {
+        @apply bg-gradient-to-r from-red-500 to-rose-600 text-white shadow-lg shadow-red-500/20;
+    }
+
+    .fi-btn.fi-color-success {
+        @apply bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg shadow-emerald-500/20;
+    }
+
+    /* ========== BADGES ========== */
+    .fi-badge {
+        @apply font-semibold rounded-lg px-3 py-1 text-xs;
+    }
+
+    .fi-badge.fi-color-success {
+        @apply bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+    }
+
+    .fi-badge.fi-color-warning {
+        @apply bg-yellow-500/20 text-yellow-400 border border-yellow-500/30;
+    }
+
+    .fi-badge.fi-color-danger {
+        @apply bg-red-500/20 text-red-400 border border-red-500/30;
+    }
+
+    .fi-badge.fi-color-info {
+        @apply bg-blue-500/20 text-blue-400 border border-blue-500/30;
+    }
+
+    .fi-badge.fi-color-gray {
+        @apply bg-gray-500/20 text-gray-400 border border-gray-500/30;
+    }
+
+    /* ========== CARDS HOVER EFFECTS ========== */
+    .fi-wi-table {
+        @apply bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-700/50 overflow-hidden transition-all duration-300;
+    }
+
+    .fi-wi-table:hover {
+        @apply shadow-xl shadow-black/20;
+    }
+
+    /* ========== MODALS ========== */
+    .fi-modal-window {
+        @apply bg-gray-800/95 backdrop-blur-xl rounded-2xl border border-gray-700/50 shadow-2xl;
+    }
+
+    .fi-modal-header {
+        @apply border-b border-gray-700/50 px-6 py-4;
+    }
+
+    .fi-modal-heading {
+        @apply text-xl font-bold text-gray-100;
+    }
+
+    .fi-modal-content {
+        @apply p-6;
+    }
+
+    /* ========== NOTIFICATIONS ========== */
+    .fi-notification {
+        @apply bg-gray-800/95 backdrop-blur-xl rounded-xl border border-gray-700/50 shadow-xl;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fi-section,
+    .fi-wi-stats-overview-stat,
+    .fi-wi-table {
+        animation: fadeInUp 0.4s ease-out;
+    }
+
+    /* ========== SCROLLBAR ========== */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-gray-900;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-gray-700 rounded-full;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-600;
+    }
+
+    /* ========== NAVIGATION ICONS ========== */
+    .fi-sidebar-item-icon.fi-color-warning {
+        @apply text-yellow-400;
+    }
+
+    .fi-sidebar-item-icon.fi-color-success {
+        @apply text-emerald-400;
+    }
+
+    .fi-sidebar-item-icon.fi-color-info {
+        @apply text-blue-400;
+    }
+
+    .fi-sidebar-item-icon.fi-color-danger {
+        @apply text-red-400;
+    }
+
+    /* ========== EMPTY STATES ========== */
+    .fi-ta-empty-state {
+        @apply py-12;
+    }
+
+    .fi-ta-empty-state-icon {
+        @apply text-gray-600 mb-4;
+    }
+
+    .fi-ta-empty-state-heading {
+        @apply text-gray-400 font-semibold text-lg;
+    }
+
+    .fi-ta-empty-state-description {
+        @apply text-gray-500 text-sm mt-1;
+    }
+
+    /* ========== TABS ========== */
+    .fi-tabs-nav {
+        @apply bg-gray-800/50 rounded-xl p-1 border border-gray-700/50;
+    }
+
+    .fi-tabs-item {
+        @apply rounded-lg transition-all duration-200;
+    }
+
+    .fi-tabs-item-active {
+        @apply bg-gray-700 text-yellow-400 shadow-md;
+    }
+}
+
+@layer utilities {
+    .glass-admin {
+        @apply bg-gray-800/60 backdrop-blur-xl border border-gray-700/50 rounded-2xl;
+    }
+
+    .gradient-gold {
+        background: linear-gradient(135deg, #facc15 0%, #f59e0b 100%);
+    }
+
+    .text-gradient-gold {
+        @apply bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent;
+    }
+}
