@@ -1,4 +1,6 @@
-  "cf_tunnel_token": "eyJhIjoiMTU0NjgxNDE1ZTI5NzhmMjdiYzllMzNmMGRmZmRkYzIiLCJ0IjoiZDg5YWE3NmMtZWUzZi00OTM0LWE1ZjQtZTQyNzNhZjA5Yzg5IiwicyI6Ik1tVmhNekE0TURNdE1ERm1PQzAwWldVNExXSmpOalF0TnpFM1l6VTNZVEkxTWpBMCJ9",
-  "cf_api_token": "cfut_8qQr600A5iltCpRtHq8HSFDF5ArHJov8LSGqYAQ3edec8e2a",
-  "cf_account_id": "154681415e2978f27bc9e33f0dffddc2",
-  "cf_tunnel_id": "d89aa76c-ee3f-4934-a5f4-e4273af09c89",
+
+R2_ACCESS_KEY_ID=f9dffd96143afff5ef9f36e5910174b1
+R2_SECRET_ACCESS_KEY=18a60c3616837cfdb3fb3dd4a8a6d191dc427847cb6245ab054996905c52e7b7
+R2_BUCKET=solumne-com-ar
+R2_ENDPOINT=https://154681415e2978f27bc9e33f0dffddc2.r2.cloudflarestorage.com
+R2_URL=https://storage2.solumne.com.ar
