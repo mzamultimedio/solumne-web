@@ -116,8 +116,8 @@ class AcademyStatsOverview extends BaseWidget
         $examenesPendientes = ExamAttempt::where('status', 'submitted')->count();
 
         // Facturas pendientes
-        $facturasPendientes = Invoice::where('paid_at', null)->count();
-        $montoPendiente = Invoice::where('paid_at', null)->sum('monto_total');
+        $facturasPendientes = Invoice::whereNull('fecha_pago')->count();
+        $montoPendiente = Invoice::whereNull('fecha_pago')->sum('monto_total');
 
         // Lecciones
         $totalLecciones = Leccion::count();

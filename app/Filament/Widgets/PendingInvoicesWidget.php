@@ -29,7 +29,7 @@ class PendingInvoicesWidget extends BaseWidget
         return $table
             ->query(
                 Invoice::query()
-                    ->whereNull('paid_at')
+                    ->whereNull('fecha_pago')
                     ->with('user')
                     ->latest()
                     ->limit(5)
