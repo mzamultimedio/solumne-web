@@ -51,9 +51,8 @@
                 $thumbnailUrl = $recurso->file_type === 'image' ? Storage::url($recurso->file_path) : null;
                 
                 $formattedSize = '';
-                $filePath = storage_path('app/public/' . $recurso->file_path);
-                if (file_exists($filePath)) {
-                    $size = filesize($filePath);
+                $size = $recurso->file_size;
+                if ($size) {
                     if ($size < 1024) $formattedSize = $size . ' B';
                     elseif ($size < 1048576) $formattedSize = round($size/1024, 1) . ' KB';
                     else $formattedSize = round($size/1048576, 1) . ' MB';
@@ -352,8 +351,7 @@
                         <div class="grid sm:grid-cols-2 gap-3">
                             @foreach($downloadableResources as $recurso)
                                 @php
-                                    $filePath = storage_path('app/public/' . $recurso->file_path);
-                                    $fileSize = file_exists($filePath) ? filesize($filePath) : 0;
+                                    $fileSize = $recurso->file_size ?? 0;
                                     $formattedSize = $fileSize < 1024 ? $fileSize . ' B' : ($fileSize < 1048576 ? round($fileSize/1024, 1) . ' KB' : round($fileSize/1048576, 1) . ' MB');
                                 @endphp
                                 <a href="{{ Storage::url($recurso->file_path) }}" download="{{ $recurso->display_name }}"

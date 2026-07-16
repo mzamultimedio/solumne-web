@@ -1,7 +1,7 @@
 <div class="px-3 py-2">
     @if($getState())
         <img 
-            src="{{ asset('storage/' . $getState()) }}" 
+            src="{{ Storage::url($getState()) }}" 
             alt="Portada del curso" 
             class="w-12 h-12 rounded-full object-cover border-2 border-slate-700 shadow-md"
         >

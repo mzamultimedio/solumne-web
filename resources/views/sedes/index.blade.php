@@ -69,7 +69,7 @@
                     <div class="flex flex-col md:flex-row w-full">
                         <div class="w-full md:w-1/2 flex-shrink-0">
                             <template x-if="selectedSede.image_path">
-                                <img :src="'/storage/' + selectedSede.image_path" :alt="'Imagen de ' + selectedSede.name" class="w-full h-64 md:h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none">
+                                <img :src="selectedSede.image_url" :alt="'Imagen de ' + selectedSede.name" class="w-full h-64 md:h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none">
                             </template>
                             <template x-if="!selectedSede.image_path">
                                 <div class="w-full h-64 md:h-full bg-gray-700 flex items-center justify-center rounded-t-lg md:rounded-l-lg md:rounded-t-none">

@@ -53,7 +53,7 @@ class DashboardController extends Controller
             ->get();
 
         // Facturas pendientes (últimas 3)
-        $facturasPendientes = Invoice::where('alumno_id', $user->id)
+        $facturasPendientes = Invoice::where('user_id', $user->id)
             ->latest('fecha_emision')
             ->limit(3)
             ->get();
